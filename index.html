@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexPilot — Smart Block Assistant for Amazon Flex Drivers</title>
+    <meta name="description" content="FlexPilot helps Amazon Flex drivers monitor block offers and complete schedule selections. Operated by Smartpace Technologies.">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23FF9500'/%3E%3Cpath d='M30 25 L70 25 L55 50 L70 50 L30 80 L40 55 L25 55 Z' fill='white'/%3E%3C/svg%3E">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FF9500;
+            --orange-dark: #E68600;
+            --bg: #0F0F0F;
+            --bg-card: #1A1A1A;
+            --text: #F5F5F5;
+            --text-dim: #999;
+            --border: #2A2A2A;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--orange);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .hero {
+            padding: 6rem 0 5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p.tagline {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 0.875rem;
+            color: var(--text-dim);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem;
+            color: var(--text);
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+            color: var(--text-dim);
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .feature h3 {
+            margin-top: 0;
+            color: var(--orange);
+        }
+
+        .legal-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .legal-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-meta {
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .legal-meta strong {
+            color: var(--text);
+        }
+
+        .legal-meta p {
+            margin-bottom: 0.25rem;
+        }
+
+        .deletion-callout {
+            background: rgba(255, 149, 0, 0.05);
+            border: 1px solid rgba(255, 149, 0, 0.3);
+            border-left: 4px solid var(--orange);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .deletion-callout strong {
+            color: var(--orange);
+        }
+
+        footer {
+            padding: 3rem 0 2rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.875rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Anchor offset for sticky header */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .legal-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <span class="logo-icon">⚡</span>
+                FlexPilot
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#privacy-policy">Privacy</a>
+                <a href="#terms">Terms</a>
+                <a href="#account-deletion">Account Deletion</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Smart Block Assistant for Amazon Flex Drivers</h1>
+        <p class="tagline">FlexPilot helps Amazon Flex drivers monitor block offers and complete schedule selections without continuously tapping the screen.</p>
+        <div class="badges">
+            <span class="badge">Operated by Smartpace Technologies</span>
+            <span class="badge">Available on Google Play</span>
+        </div>
+    </div>
+</section>
+
+<section id="features">
+    <div class="container">
+        <h2>What FlexPilot Does</h2>
+        <p>FlexPilot is designed for Amazon Flex drivers who find repetitive scrolling and selection physically tiring or who have limited time to monitor the screen.</p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Block Monitoring</h3>
+                <p>Reads block offers from the Amazon Flex app and surfaces matches based on your configured filters.</p>
+            </div>
+            <div class="feature">
+                <h3>Schedule Selection</h3>
+                <p>Performs schedule selections you have configured. You stay in full control — start, stop, and adjust anytime.</p>
+            </div>
+            <div class="feature">
+                <h3>Filters & Preferences</h3>
+                <p>Configure preferences for pay rate, station, duration, and time. Only matching blocks are considered.</p>
+            </div>
+            <div class="feature">
+                <h3>Privacy First</h3>
+                <p>Reads only the Amazon Flex app. Cannot access other apps, passwords, or personal data.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="privacy-policy">
+    <div class="container">
+        <div class="legal-section">
+            <h2>Privacy Policy for FlexPilot</h2>
+            <div class="legal-meta">
+                <p><strong>Developer:</strong> Smartpace Technologies</p>
+                <p><strong>Effective Date:</strong> 30 March 2026</p>
+                <p><strong>Contact:</strong> <a href="mailto:support@flexpilot-app.com">support@flexpilot-app.com</a></p>
+            </div>
+
+            <p>This Privacy Policy explains how Smartpace Technologies ("we", "us") handles your information when you use the FlexPilot Android app (package name: <code>com.flexgrab</code>), available on the Google Play Store.</p>
+
+            <h3>Information we collect</h3>
+            <ul>
+                <li><strong>Account information:</strong> Your Google account email address when you sign in.</li>
+                <li><strong>Device identifiers:</strong> A hashed Android ID and an install UUID, used to bind your account to your device for fraud prevention.</li>
+                <li><strong>App version and platform:</strong> To diagnose compatibility issues.</li>
+                <li><strong>Subscription state:</strong> Trial status, purchase tokens, and expiry dates managed via Google Play Billing.</li>
+                <li><strong>Performance telemetry:</strong> Anonymous metrics about scan performance and app stability.</li>
+                <li><strong>Referral data:</strong> Your referral code and any codes you've redeemed.</li>
+            </ul>
+
+            <h3>How we use information</h3>
+            <ul>
+                <li>To authenticate you and bind your account to your device.</li>
+                <li>To enforce subscription state and manage your trial period.</li>
+                <li>To detect fraudulent or abusive behavior.</li>
+                <li>To improve app performance and fix bugs.</li>
+                <li>To process referral rewards.</li>
+            </ul>
+
+            <h3>What we don't do</h3>
+            <ul>
+                <li>We do not sell your data.</li>
+                <li>We do not share data with advertisers.</li>
+                <li>We do not access content from other apps on your device.</li>
+                <li>We do not collect contacts, photos, location, or browsing history.</li>
+            </ul>
+
+            <h3>Data sharing</h3>
+            <p>We use the following service providers, who process data on our behalf under their own privacy policies:</p>
+            <ul>
+                <li><strong>Google Firebase</strong> — authentication and crash reporting</li>
+                <li><strong>Supabase</strong> — database and backend services</li>
+                <li><strong>Google Play Billing</strong> — subscription management</li>
+            </ul>
+
+            <h3>Your rights</h3>
+            <ul>
+                <li><strong>Access</strong> the data we hold about you — email <a href="mailto:support@flexpilot-app.com">support@flexpilot-app.com</a>.</li>
+                <li><strong>Delete</strong> your account and associated data — see the <a href="#account-deletion">Account Deletion</a> section below.</li>
+                <li><strong>Correct</strong> inaccurate data we hold about you — email <a href="mailto:support@flexpilot-app.com">support@flexpilot-app.com</a>.</li>
+            </ul>
+
+            <h3>Security</h3>
+            <p>All traffic between the app and our servers is encrypted (HTTPS). Personal data is stored on encrypted-at-rest infrastructure provided by our service providers. Access to backend systems is restricted to authorized personnel only.</p>
+
+            <h3>Children</h3>
+            <p>FlexPilot is not directed at children under 18. We do not knowingly collect data from children. If you believe a child has provided us data, contact us and we will delete it.</p>
+
+            <h3>Changes</h3>
+            <p>We may update this policy. The Effective Date at the top reflects the most recent version. Material changes will be announced in-app.</p>
+
+            <h3>Contact</h3>
+            <p>Questions about this policy: <a href="mailto:support@flexpilot-app.com">support@flexpilot-app.com</a></p>
+        </div>
+    </div>
+</section>
+
+<section id="account-deletion">
+    <div class="container">
+        <div class="legal-section">
+            <h2>Account Deletion</h2>
+            <div class="legal-meta">
+                <p><strong>App:</strong> FlexPilot</p>
+                <p><strong>Developer:</strong> Smartpace Technologies</p>
+            </div>
+
+            <p>You have the right to request deletion of your FlexPilot account and all personal data associated with it at any time. We do not currently offer in-app account deletion; deletion is handled by emailing our support address.</p>
+
+            <div class="deletion-callout">
+                <p><strong>To request deletion:</strong></p>
+                <ol>
+                    <li>Send an email to <strong><a href="mailto:support@flexpilot-app.com?subject=Account%20Deletion%20Request">support@flexpilot-app.com</a></strong> from the Google account you use to sign in to FlexPilot.</li>
+                    <li>Use the subject line <strong>"Account Deletion Request"</strong>.</li>
+                    <li>Include the Google account email you sign in with so we can verify your identity. No other information is required.</li>
+                </ol>
+            </div>
+
+            <h3>What gets deleted</h3>
+            <ul>
+                <li>Your user record (email, hashed Android ID, install UUID, app version, sign-in timestamps)</li>
+                <li>Your subscription state, purchase tokens, and trial history</li>
+                <li>Your referral code, redeemed referral relationships, and referral rewards balance</li>
+                <li>Your scan-performance telemetry and crash records associated with your account</li>
+            </ul>
+
+            <h3>Timeline</h3>
+            <p>We action verified deletion requests within <strong>30 days</strong> of receipt and email you a confirmation when complete.</p>
+
+            <h3>What we may retain</h3>
+            <p>A minimal record of the deletion request itself (email, request date, deletion date) for fraud-prevention, tax, and legal-compliance purposes. This retained record contains no in-app activity data and is kept only as long as required by law.</p>
+
+            <h3>Subscription cancellation</h3>
+            <p>Cancelling your Google Play subscription is a separate action from account deletion — you can cancel via Google Play → Subscriptions → FlexPilot at any time, with or without requesting deletion.</p>
+        </div>
+    </div>
+</section>
+
+<section id="terms">
+    <div class="container">
+        <div class="legal-section">
+            <h2>Terms of Service</h2>
+            <div class="legal-meta">
+                <p><strong>App:</strong> FlexPilot</p>
+                <p><strong>Developer:</strong> Smartpace Technologies</p>
+                <p><strong>Effective Date:</strong> 30 March 2026</p>
+                <p><strong>Contact:</strong> <a href="mailto:support@flexpilot-app.com">support@flexpilot-app.com</a></p>
+            </div>
+
+            <p>These Terms of Service ("Terms") govern your use of the FlexPilot Android application (the "App") provided by Smartpace Technologies ("we", "us", "our"). By installing or using the App, you agree to these Terms.</p>
+
+            <h3>Eligibility</h3>
+            <p>You must be at least 18 years old and an active or prospective Amazon Flex driver to use FlexPilot. By using the App, you represent that you meet these requirements.</p>
+
+            <h3>Not affiliated with Amazon</h3>
+            <p>FlexPilot is an independent third-party tool. We are not affiliated with, endorsed by, or sponsored by Amazon.com Inc., Amazon Flex, or any of their subsidiaries. "Amazon" and "Amazon Flex" are trademarks of their respective owners.</p>
+
+            <h3>License</h3>
+            <p>We grant you a limited, non-exclusive, non-transferable, revocable license to install and use the App on devices you own or control, solely for personal use as an Amazon Flex driver, subject to these Terms.</p>
+
+            <h3>Subscriptions and trial</h3>
+            <ul>
+                <li>FlexPilot offers a 14-day free trial. Referral codes may extend this to 30 days.</li>
+                <li>After the trial expires, continued use requires an active subscription (monthly or yearly).</li>
+                <li>Subscriptions are billed via Google Play and renew automatically unless cancelled at least 24 hours before the renewal date.</li>
+                <li>Refunds are handled by Google Play according to their refund policy.</li>
+            </ul>
+
+            <h3>Acceptable use</h3>
+            <p>You agree not to:</p>
+            <ul>
+                <li>Reverse engineer, decompile, or disassemble the App.</li>
+                <li>Use the App to violate Amazon Flex's terms of service.</li>
+                <li>Share your account, referral rewards, or subscription with others.</li>
+                <li>Attempt to bypass subscription gates, trial limits, or anti-fraud mechanisms.</li>
+                <li>Use the App for any illegal purpose.</li>
+            </ul>
+
+            <h3>Account binding</h3>
+            <p>To prevent fraud, your FlexPilot account is bound to your device on first sign-in. You cannot use a different Google account on the same device, and you cannot transfer your account to a different device without contacting support.</p>
+
+            <h3>Disclaimers</h3>
+            <p>FlexPilot is provided "as is" without warranties of any kind. We do not guarantee that the App will be available at all times, will detect every block offer, or will result in any particular earnings. Block availability depends on Amazon Flex; we have no control over Amazon's systems.</p>
+
+            <h3>Limitation of liability</h3>
+            <p>To the maximum extent permitted by law, Smartpace Technologies is not liable for any indirect, incidental, consequential, or punitive damages arising from your use of the App, including lost earnings, missed blocks, or device issues. Our total liability is limited to the amount you have paid us in the 12 months preceding the claim.</p>
+
+            <h3>Termination</h3>
+            <p>We may suspend or terminate your access to the App if you violate these Terms or engage in fraudulent or abusive behavior. You may stop using the App at any time by uninstalling it and cancelling your subscription.</p>
+
+            <h3>Changes to Terms</h3>
+            <p>We may update these Terms. The Effective Date at the top reflects the most recent version. Material changes will be announced in-app. Continued use after changes constitutes acceptance.</p>
+
+            <h3>Governing law</h3>
+            <p>These Terms are governed by the laws of Australia. Any disputes will be resolved in the courts of New South Wales, Australia.</p>
+
+            <h3>Contact</h3>
+            <p>Questions about these Terms: <a href="mailto:support@flexpilot-app.com">support@flexpilot-app.com</a></p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <h2>Contact</h2>
+        <p><strong>Smartpace Technologies</strong></p>
+        <p>Email: <a href="mailto:support@flexpilot-app.com">support@flexpilot-app.com</a></p>
+        <p>For support, account deletion requests, refund inquiries, and general questions.</p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p><strong>FlexPilot</strong> — Operated by Smartpace Technologies</p>
+        <p>&copy; 2026 Smartpace Technologies. All rights reserved.</p>
+        <p>FlexPilot is not affiliated with or endorsed by Amazon.com Inc. or Amazon Flex.</p>
+        <p style="margin-top: 1rem;">
+            <a href="#privacy-policy">Privacy Policy</a> ·
+            <a href="#terms">Terms of Service</a> ·
+            <a href="#account-deletion">Account Deletion</a> ·
+            <a href="mailto:support@flexpilot-app.com">Contact</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

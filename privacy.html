@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — FlexPilot</title>
+    <meta name="description" content="FlexPilot Privacy Policy. Operated by Smartpace Technologies.">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23FF6B1A'/%3E%3Cpath d='M30 22 L72 22 L52 52 L70 52 L28 82 L42 56 L24 56 Z' fill='white'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --orange: #FF6B1A;
+            --bg: #0A0A0A;
+            --bg-card: #131313;
+            --text: #F5F5F0;
+            --text-dim: #888;
+            --text-muted: #555;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+
+        ::selection { background: var(--orange); color: #000; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--orange); text-decoration: none; transition: opacity 0.2s; }
+        a:hover { opacity: 0.7; }
+
+        .container { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+
+        header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .logo-icon {
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, var(--orange) 0%, #FF8A3D 100%);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .logo-icon svg { width: 18px; height: 18px; }
+
+        .nav-back {
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-back:hover { color: var(--text); opacity: 1; }
+
+        article {
+            padding: 5rem 0;
+        }
+
+        .doc-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-meta {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .doc-meta strong { color: var(--text); font-weight: 500; }
+
+        .doc-meta p { margin-bottom: 0.25rem; }
+
+        article h2 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        article h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        article p, article ul {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        article ul {
+            padding-left: 1.5rem;
+        }
+
+        article li {
+            margin-bottom: 0.5rem;
+        }
+
+        article strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        code {
+            font-family: 'Geist Mono', 'SF Mono', Consolas, monospace;
+            background: var(--bg-card);
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-size: 0.875em;
+            color: var(--orange);
+        }
+
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+        }
+
+        footer a {
+            color: var(--text-dim);
+        }
+
+        footer p { margin-bottom: 0.5rem; }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 0 1.5rem; }
+            article { padding: 3rem 0; }
+            article h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav class="nav">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M7 4 L17 4 L12 11 L17 11 L7 20 L10 13 L5 13 Z" fill="white"/></svg>
+                </span>
+                FlexPilot
+            </a>
+            <a href="index.html" class="nav-back">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to home
+            </a>
+        </nav>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <span class="doc-eyebrow">Legal</span>
+        <h1>Privacy Policy</h1>
+
+        <div class="doc-meta">
+            <p><strong>App:</strong> FlexPilot</p>
+            <p><strong>Developer:</strong> Smartpace Technologies</p>
+            <p><strong>Effective Date:</strong> 30 March 2026</p>
+            <p><strong>Contact:</strong> <a href="mailto:support@flexpilot.app">support@flexpilot.app</a></p>
+        </div>
+
+        <p>This Privacy Policy explains how Smartpace Technologies ("we", "us") handles your information when you use the FlexPilot Android app (package name: <code>com.flexgrab</code>), available on the Google Play Store.</p>
+
+        <h2>What we collect</h2>
+        <ul>
+            <li><strong>Email address</strong> from your Google account when you sign in.</li>
+            <li><strong>Device identifiers</strong> — a hashed Android ID and install UUID, used to bind your account to your device for fraud prevention.</li>
+            <li><strong>Subscription state</strong> — trial status and purchase tokens, managed via Google Play Billing.</li>
+            <li><strong>Usage telemetry</strong> — anonymous performance metrics and crash data.</li>
+            <li><strong>Referral data</strong> — your referral code and any redeemed codes.</li>
+        </ul>
+
+        <h2>How we use it</h2>
+        <ul>
+            <li>Authenticate you and bind your account to your device.</li>
+            <li>Manage your trial period and subscription state.</li>
+            <li>Detect fraud and abusive behavior.</li>
+            <li>Improve app performance and fix bugs.</li>
+            <li>Process referral rewards.</li>
+        </ul>
+
+        <h2>What we don't do</h2>
+        <ul>
+            <li>We don't sell your data.</li>
+            <li>We don't share data with advertisers.</li>
+            <li>We don't access content from other apps on your device.</li>
+            <li>We don't collect contacts, photos, location, or browsing history.</li>
+        </ul>
+
+        <h2>Service providers</h2>
+        <p>We use the following providers to operate FlexPilot. Each processes data on our behalf under their own privacy policies:</p>
+        <ul>
+            <li><strong>Google Firebase</strong> — authentication and crash reporting</li>
+            <li><strong>Supabase</strong> — database and backend services</li>
+            <li><strong>Google Play Billing</strong> — subscription management</li>
+        </ul>
+
+        <h2>Your rights</h2>
+        <ul>
+            <li><strong>Access</strong> the data we hold — email <a href="mailto:support@flexpilot.app">support@flexpilot.app</a>.</li>
+            <li><strong>Delete</strong> your account — see <a href="account-deletion.html">Account Deletion</a>.</li>
+            <li><strong>Correct</strong> inaccurate data — email <a href="mailto:support@flexpilot.app">support@flexpilot.app</a>.</li>
+        </ul>
+
+        <h2>Security</h2>
+        <p>All traffic between the app and our servers is encrypted (HTTPS). Data is stored on encrypted infrastructure. Backend access is restricted to authorized personnel.</p>
+
+        <h2>Children</h2>
+        <p>FlexPilot is not directed at children under 18. We do not knowingly collect data from children.</p>
+
+        <h2>Changes</h2>
+        <p>We may update this policy. The Effective Date at the top reflects the most recent version. Material changes will be announced in-app.</p>
+
+        <h2>Contact</h2>
+        <p>Questions? <a href="mailto:support@flexpilot.app">support@flexpilot.app</a></p>
+    </div>
+</article>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Smartpace Technologies. All rights reserved.</p>
+        <p>FlexPilot is not affiliated with or endorsed by Amazon.com Inc.</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="account-deletion.html">Account Deletion</a>
+            <a href="mailto:support@flexpilot.app">Contact</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

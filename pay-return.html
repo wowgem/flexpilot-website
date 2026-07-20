@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexPilot — Payment setup</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23FF6B1A'/%3E%3Cpath d='M30 22 L72 22 L52 52 L70 52 L28 82 L42 56 L24 56 Z' fill='white'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#080C14;color:#E8EDF4;font-family:'Geist',-apple-system,Segoe UI,Roboto,sans-serif;
+             min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+        .card{max-width:420px;width:100%}
+        .badge{width:84px;height:84px;border-radius:24px;margin:0 auto 28px;display:flex;align-items:center;justify-content:center}
+        .ok{background:rgba(52,199,89,.14)} .cancel{background:rgba(255,107,26,.14)}
+        .badge svg{width:44px;height:44px}
+        h1{font-size:26px;font-weight:800;margin-bottom:12px}
+        p{font-size:15px;color:#A8B4C3;line-height:1.6;margin-bottom:28px}
+        .hint{display:inline-block;font-size:14px;font-weight:600;color:#E8EDF4;
+              background:#111827;border:1px solid #1A2436;border-radius:12px;padding:14px 22px}
+        .brand{margin-top:40px;font-size:13px;color:#5A6577;font-weight:600;letter-spacing:.5px}
+    </style>
+</head>
+<body>
+    <div class="card" id="card"></div>
+    <script>
+        var success = new URLSearchParams(location.search).get('setup') !== 'cancel';
+        var card = document.getElementById('card');
+        if (success) {
+            card.innerHTML =
+              '<div class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>'
+              + '<h1>Payment method saved</h1>'
+              + '<p>You\'re all set for pay-per-block. We\'ll only charge 3.5% once your commissions reach $20 — no monthly fee.</p>'
+              + '<div class="hint">You can close this tab and return to FlexPilot.</div>';
+        } else {
+            card.innerHTML =
+              '<div class="badge cancel"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div>'
+              + '<h1>Setup cancelled</h1>'
+              + '<p>No card was saved and nothing was charged. You can try again anytime from FlexPilot.</p>'
+              + '<div class="hint">Return to FlexPilot to continue.</div>';
+        }
+    </script>
+    <div class="brand">FLEXPILOT</div>
+</body>
+</html>

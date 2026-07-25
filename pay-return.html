@@ -11,37 +11,50 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{background:#080C14;color:#E8EDF4;font-family:'Geist',-apple-system,Segoe UI,Roboto,sans-serif;
-             min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
-        .card{max-width:420px;width:100%}
+             min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+             padding:24px;text-align:center}
+        .card{max-width:420px;width:100%;display:flex;flex-direction:column;align-items:center}
         .badge{width:84px;height:84px;border-radius:24px;margin:0 auto 28px;display:flex;align-items:center;justify-content:center}
         .ok{background:rgba(52,199,89,.14)} .cancel{background:rgba(255,107,26,.14)}
         .badge svg{width:44px;height:44px}
         h1{font-size:26px;font-weight:800;margin-bottom:12px}
-        p{font-size:15px;color:#A8B4C3;line-height:1.6;margin-bottom:28px}
-        .hint{display:inline-block;font-size:14px;font-weight:600;color:#E8EDF4;
-              background:#111827;border:1px solid #1A2436;border-radius:12px;padding:14px 22px}
-        .brand{margin-top:40px;font-size:13px;color:#5A6577;font-weight:600;letter-spacing:.5px}
+        p{font-size:15px;color:#A8B4C3;line-height:1.6;margin-bottom:26px}
+        .btn{display:inline-block;background:#FF6B1A;color:#fff;text-decoration:none;
+             border-radius:13px;padding:15px 30px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer}
+        .note{margin-top:16px;font-size:12.5px;color:#5A6577}
+        .brand{position:fixed;left:0;right:0;bottom:26px;text-align:center;
+               font-size:13px;color:#5A6577;font-weight:600;letter-spacing:.5px}
     </style>
 </head>
 <body>
     <div class="card" id="card"></div>
+    <div class="brand">FLEXPILOT</div>
     <script>
         var success = new URLSearchParams(location.search).get('setup') !== 'cancel';
         var card = document.getElementById('card');
+        // Deep link back into the app — the app's intent-filter (singleTask) brings
+        // FlexPilot to the front and dismisses this Custom Tab automatically.
+        var deepLink = success ? 'flexpilot://pay-return?setup=success'
+                               : 'flexpilot://pay-return?setup=cancel';
         if (success) {
             card.innerHTML =
               '<div class="badge ok"><svg viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>'
               + '<h1>Payment method saved</h1>'
-              + '<p>You\'re all set for pay-per-block. We\'ll only charge 3.5% once your commissions reach $20 — no monthly fee.</p>'
-              + '<div class="hint">You can close this tab and return to FlexPilot.</div>';
+              + '<p>You\'re all set for pay-per-block. 3.5% commission, no monthly fee.</p>'
+              + '<a class="btn" href="' + deepLink + '">Return to FlexPilot</a>'
+              + '<div class="note">Taking you back to FlexPilot…</div>';
         } else {
             card.innerHTML =
               '<div class="badge cancel"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div>'
               + '<h1>Setup cancelled</h1>'
               + '<p>No card was saved and nothing was charged. You can try again anytime from FlexPilot.</p>'
-              + '<div class="hint">Return to FlexPilot to continue.</div>';
+              + '<a class="btn" href="' + deepLink + '">Return to FlexPilot</a>'
+              + '<div class="note">Taking you back to FlexPilot…</div>';
         }
+        // Auto-return after a beat so the driver sees the confirmation, then lands
+        // back in the app. The button above is the guaranteed fallback if a browser
+        // blocks the scripted navigation.
+        setTimeout(function () { location.href = deepLink; }, 1300);
     </script>
-    <div class="brand">FLEXPILOT</div>
 </body>
 </html>

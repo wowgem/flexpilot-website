@@ -3,10 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlexPilot — Smart Block Assistant for Amazon Flex Drivers</title>
-    <meta name="description" content="FlexPilot helps Amazon Flex drivers find blocks faster. Stop tapping. Start earning.">
+    <title>FlexPilot — Amazon Flex Bot &amp; Block Grabber | Auto-Grab Blocks</title>
+    <meta name="description" content="FlexPilot is the Amazon Flex bot and block grabber that auto-grabs and accepts delivery blocks in milliseconds. Set your pay, station, and time filters, stop tapping, and start earning. 14-day free trial.">
+    <meta name="keywords" content="amazon flex bot, amazon flex block grabber, bot grabber for amazon, flex bot, amazon flex grabber, amazon flex auto grabber, auto grab flex blocks, auto accept amazon flex blocks, amazon flex block catcher, amazon flex grabber app">
+    <link rel="canonical" href="https://flexpilot.app/">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="author" content="Smartpace Technologies">
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Cpath d='M54,22 L82,38 L54,54 L26,38 Z' fill='%23E87D3D'/%3E%3Cpath d='M54,54 L82,38 L82,70 L54,86 Z' fill='%23D9551A'/%3E%3Cpath d='M26,38 L54,54 L54,86 L26,70 Z' fill='%23B33E0F'/%3E%3Cpath d='M57,44 L42,65 L51,65 L51,80 L66,59 L57,59 Z' fill='%23141414' stroke='%23F5C24B' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FlexPilot">
+    <meta property="og:title" content="FlexPilot — Amazon Flex Bot &amp; Block Grabber">
+    <meta property="og:description" content="The Amazon Flex bot that auto-grabs delivery blocks in milliseconds. Set your filters, stop tapping, start earning.">
+    <meta property="og:url" content="https://flexpilot.app/">
+    <meta property="og:image" content="https://flexpilot.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FlexPilot — Amazon Flex Bot &amp; Block Grabber">
+    <meta name="twitter:description" content="The Amazon Flex bot that auto-grabs blocks in milliseconds. Stop tapping, start earning.">
+    <meta name="twitter:image" content="https://flexpilot.app/og-image.png">
+
+    <!-- Structured data: the app -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "FlexPilot",
+      "operatingSystem": "Android",
+      "applicationCategory": "BusinessApplication",
+      "description": "FlexPilot is an Amazon Flex bot and block grabber that automatically grabs and accepts Amazon Flex delivery blocks matching your pay, station, and time filters.",
+      "url": "https://flexpilot.app/",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.flexgrab",
+      "author": { "@type": "Organization", "name": "Smartpace Technologies" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23FF6B1A'/%3E%3Cpath d='M30 22 L72 22 L52 52 L70 52 L28 82 L42 56 L24 56 Z' fill='white'/%3E%3C/svg%3E">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,15 +152,18 @@
         .logo-icon {
             width: 32px;
             height: 32px;
+            background: linear-gradient(135deg, var(--orange) 0%, #FF8A3D 100%);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            box-shadow: 0 4px 20px var(--orange-glow);
         }
 
         .logo-icon svg {
-            width: 32px;
-            height: 32px;
+            width: 18px;
+            height: 18px;
         }
 
         .nav-links {
@@ -355,6 +394,8 @@
         .phone-logo-mini {
             width: 32px;
             height: 32px;
+            background: linear-gradient(135deg, var(--orange) 0%, #FF8A3D 100%);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -852,7 +893,9 @@
         <nav class="nav">
             <a href="#" class="logo">
                 <span class="logo-icon">
-                    <svg viewBox="0 0 108 108"><path d="M54,22 L82,38 L54,54 L26,38 Z" fill="#E87D3D"/><path d="M54,54 L82,38 L82,70 L54,86 Z" fill="#D9551A"/><path d="M26,38 L54,54 L54,86 L26,70 Z" fill="#B33E0F"/><path d="M57,44 L42,65 L51,65 L51,80 L66,59 L57,59 Z" fill="#141414" stroke="#F5C24B" stroke-width="2.4" stroke-linejoin="round"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7 4 L17 4 L12 11 L17 11 L7 20 L10 13 L5 13 Z" fill="white"/>
+                    </svg>
                 </span>
                 FlexPilot
             </a>
@@ -872,9 +915,9 @@
     <div class="container">
         <div class="hero-content">
             <div>
-                <span class="eyebrow">For Amazon Flex drivers</span>
-                <h1>Stop tapping.<br><em>Start earning.</em></h1>
-                <p class="hero-tagline">FlexPilot watches block offers for you, so you can stop staring at your screen and get back to driving.</p>
+                <span class="eyebrow">Amazon Flex Bot &amp; Block Grabber</span>
+                <h1>Auto-grab Amazon Flex blocks.<br><em>Stop tapping. Start earning.</em></h1>
+                <p class="hero-tagline">FlexPilot is the Amazon Flex bot that auto-accepts delivery blocks matching your pay, station, and time filters — grabbing them in milliseconds, so you can stop staring at your screen and get back to driving.</p>
                 <div class="cta-group">
                     <a href="#download" class="btn btn-primary">
                         Get on Google Play
@@ -892,7 +935,7 @@
                         </div>
                         <div class="phone-header">
                             <div class="phone-logo-mini">
-                                <svg width="30" height="30" viewBox="0 0 108 108"><path d="M54,22 L82,38 L54,54 L26,38 Z" fill="#E87D3D"/><path d="M54,54 L82,38 L82,70 L54,86 Z" fill="#D9551A"/><path d="M26,38 L54,54 L54,86 L26,70 Z" fill="#B33E0F"/><path d="M57,44 L42,65 L51,65 L51,80 L66,59 L57,59 Z" fill="#141414" stroke="#F5C24B" stroke-width="2.4" stroke-linejoin="round"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M7 4 L17 4 L12 11 L17 11 L7 20 L10 13 L5 13 Z"/></svg>
                             </div>
                             <div class="phone-status">SCANNING</div>
                         </div>
@@ -1053,17 +1096,63 @@
     </div>
 </section>
 
+<section id="faq" style="padding: 6rem 0; border-top: 1px solid var(--border);">
+    <div class="container" style="max-width: 820px;">
+        <span class="section-eyebrow reveal">FAQ</span>
+        <h2 class="section-title reveal" style="margin-bottom: 2.5rem;">Amazon Flex bot &amp; block grabber questions</h2>
+
+        <details class="reveal" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem;">
+            <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: var(--text);">Is FlexPilot an Amazon Flex bot?</summary>
+            <p style="margin-top: 0.75rem; color: var(--text-dim);">Yes. FlexPilot is an Amazon Flex bot that watches the Flex app for block offers and auto-selects the ones matching your filters, so you never have to tap or refresh manually.</p>
+        </details>
+
+        <details class="reveal" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem;">
+            <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: var(--text);">How does the Amazon Flex block grabber work?</summary>
+            <p style="margin-top: 0.75rem; color: var(--text-dim);">Set your preferred pay rate, stations, duration, and time windows once. FlexPilot then monitors the Amazon Flex app in the background and grabs matching blocks in milliseconds as soon as they appear.</p>
+        </details>
+
+        <details class="reveal" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem;">
+            <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: var(--text);">How fast does FlexPilot grab blocks?</summary>
+            <p style="margin-top: 0.75rem; color: var(--text-dim);">FlexPilot uses native code paths that process new blocks in milliseconds - fast enough to compete in saturated markets where blocks disappear almost instantly.</p>
+        </details>
+
+        <details class="reveal" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem;">
+            <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: var(--text);">How much does the FlexPilot Amazon Flex grabber cost?</summary>
+            <p style="margin-top: 0.75rem; color: var(--text-dim);">FlexPilot is free for 14 days with no card required to start. Refer a friend to extend your trial to 30 days. After the trial, a simple subscription keeps it running.</p>
+        </details>
+
+        <details class="reveal" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem;">
+            <summary style="cursor: pointer; font-weight: 600; font-size: 1.05rem; color: var(--text);">Is FlexPilot safe for my Amazon Flex account?</summary>
+            <p style="margin-top: 0.75rem; color: var(--text-dim);">FlexPilot only reads the Amazon Flex app to find and select blocks. It cannot access other apps, passwords, or personal data, and you stay in full control - start, stop, or adjust it anytime.</p>
+        </details>
+    </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is FlexPilot an Amazon Flex bot?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. FlexPilot is an Amazon Flex bot that watches the Flex app for block offers and auto-selects the ones matching your filters, so you never have to tap or refresh manually." } },
+    { "@type": "Question", "name": "How does the Amazon Flex block grabber work?", "acceptedAnswer": { "@type": "Answer", "text": "Set your preferred pay rate, stations, duration, and time windows once. FlexPilot then monitors the Amazon Flex app in the background and grabs matching blocks in milliseconds as soon as they appear." } },
+    { "@type": "Question", "name": "How fast does FlexPilot grab blocks?", "acceptedAnswer": { "@type": "Answer", "text": "FlexPilot uses native code paths that process new blocks in milliseconds - fast enough to compete in saturated markets where blocks disappear almost instantly." } },
+    { "@type": "Question", "name": "How much does the FlexPilot Amazon Flex grabber cost?", "acceptedAnswer": { "@type": "Answer", "text": "FlexPilot is free for 14 days with no card required to start. Refer a friend to extend your trial to 30 days. After the trial, a simple subscription keeps it running." } },
+    { "@type": "Question", "name": "Is FlexPilot safe for my Amazon Flex account?", "acceptedAnswer": { "@type": "Answer", "text": "FlexPilot only reads the Amazon Flex app to find and select blocks. It cannot access other apps, passwords, or personal data, and you stay in full control - start, stop, or adjust it anytime." } }
+  ]
+}
+</script>
+
 <footer>
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="#" class="logo">
                     <span class="logo-icon">
-                        <svg viewBox="0 0 108 108"><path d="M54,22 L82,38 L54,54 L26,38 Z" fill="#E87D3D"/><path d="M54,54 L82,38 L82,70 L54,86 Z" fill="#D9551A"/><path d="M26,38 L54,54 L54,86 L26,70 Z" fill="#B33E0F"/><path d="M57,44 L42,65 L51,65 L51,80 L66,59 L57,59 Z" fill="#141414" stroke="#F5C24B" stroke-width="2.4" stroke-linejoin="round"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M7 4 L17 4 L12 11 L17 11 L7 20 L10 13 L5 13 Z" fill="white"/></svg>
                     </span>
                     FlexPilot
                 </a>
-                <p>Smart block assistant for Amazon Flex drivers. Built by Synexa Labs.</p>
+                <p>The Amazon Flex bot and block grabber that auto-grabs blocks for you. Built by Smartpace Technologies.</p>
             </div>
             <div class="footer-col">
                 <h4>Product</h4>
@@ -1089,7 +1178,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Synexa Labs. All rights reserved.</p>
+            <p>© 2026 Smartpace Technologies. All rights reserved.</p>
             <p>Not affiliated with or endorsed by Amazon.com Inc.</p>
         </div>
     </div>
